@@ -17,7 +17,7 @@
                 {{ $books->links() }}
             </div>
         </div>
-        <table class="table table-striped table-bordered">
+        <table class="table">
             <thead>
             <tr>
                 <th>Título</th>
