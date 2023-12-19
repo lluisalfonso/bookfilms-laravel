@@ -31,7 +31,7 @@
             @foreach($books as $book)
                 <tr>
                     <td>{{ $book->title }}</td>
-                    <td>{{ $book->author_id }}</td>
+                    <td>{{ $book->author->name ?? '' }}</td>
                     <td>
                         @if($book->rating)
                             {{ $book->rating }}
