@@ -12,13 +12,12 @@ class FilmController extends Controller
 {
     public function index() {
         $films = Film::paginate(5);
-        
+
         return view('films.index', ['films' => $films]);
     }
 
     public function create() {
-        $directors = Director::all();
-        return view('films.create', ['directors' => $directors]);
+        return view('films.create', ['directors' => Director::all()]);
     }
 
     public function store(StoreFilmRequest $request): RedirectResponse {
@@ -31,7 +30,7 @@ class FilmController extends Controller
     }
 
     public function edit(Film $film) {
-        return view('films.edit', ['film' => $film]);
+        return view('films.edit', ['film' => $film, 'directors' => Director::all()]);
     }
 
     public function update(Film $film, StoreFilmRequest $request) {
@@ -47,6 +46,6 @@ class FilmController extends Controller
     public function delete(Film $film) {
         $film->delete();
 
-        return redirect(route('film.index'))->with('success', 'Autor eliminado correctamente!');
+        return redirect(route('film.index'))->with('success', 'Película eliminada correctamente!');
     }
 }

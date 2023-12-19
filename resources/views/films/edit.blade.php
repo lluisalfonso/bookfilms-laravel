@@ -12,8 +12,16 @@
         </div>
 
         <div class="mb-3">
-            <label for="author" class="form-label">Autor</label>
-            <input type="text" class="form-control" name="author" id="author" value="{{ $film->author_id }}">
+            <label for="director_id" class="form-label">Director</label>
+            <select class="form-select" name="director_id" id="director_id">
+                <option>
+                </option>
+                @foreach ($directors as $director)
+                    <option id="director-{{ $director->id }}" value="{{ $director->id }}") @if (isset($film->director->id) && $director->id === $film->director->id) selected @endif>
+                        {{ $director->name }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div class="mb-3">

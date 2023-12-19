@@ -30,7 +30,7 @@
             @foreach($films as $film)
                 <tr>
                     <td>{{ $film->title }}</td>
-                    <td>{{ $film->author_id }}</td>
+                    <td>{{ $film->director->name ?? '' }}</td>
                     <td>
                         @if($film->rating)
                             {{ $film->rating }}
