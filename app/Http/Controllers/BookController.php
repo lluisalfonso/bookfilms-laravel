@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,14 +21,8 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    public function store(Request $request) {
-        $data = $request->validate([
-            'author_id' => 'nullable',
-            'title' => 'required',
-            'rating' => 'nullable|decimal:0,2|between:0,10',
-            'has_readen' => 'nullable',
-            'description' => 'nullable'
-        ]);
+    public function store(StoreBookRequest $request) {
+        $data = $request->validated();
 
         $data['has_readen'] = $this->checkboxToBoolean($data);
 
@@ -40,14 +35,8 @@ class BookController extends Controller
         return view('books.edit', ['book' => $book]);
     }
 
-    public function update(Book $book, Request $request) {
-        $data = $request->validate([
-            'author_id' => 'nullable',
-            'title' => 'required',
-            'rating' => 'nullable|decimal:0,2|between:0,10',
-            'has_readen' => 'nullable',
-            'description' => 'nullable'
-        ]);
+    public function update(Book $book, StoreBookRequest $request) {
+        $data = $request->validated();
 
         $data['has_readen'] = $this->checkboxToBoolean($data);
 
