@@ -23,7 +23,7 @@ class StoreFilmRequest extends FormRequest
     {
         // Rating field must be a number between 0 and 10 (included) and allows a max of 2 decimals
         return [
-            'director_id' => 'nullable',
+            'director_id' => 'nullable|numeric',
             'title' => 'required|string',
             'rating' => 'bail|nullable|numeric|between:0,10|regex:/^\d*(\.\d{1,2})?$/',
             'has_seen' => 'nullable',
