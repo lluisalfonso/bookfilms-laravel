@@ -24,15 +24,16 @@
         </div>
 
         <div class="form-group row">
-            <label for="author" class="col-sm-2 col-form-label">Director</label>
-            <select class="form-select" name="directors" id="directors">
+            <label for="director_id" class="col-sm-2 col-form-label">Director</label>
+            <select class="form-select" name="director_id" id="director_id">
+                <option>
+                </option>
                 @foreach ($directors as $director)
                     <option id="director-{{ $director->id }}" value="{{ $director->id }}")>
                         {{ $director->name }}
                     </option>
                 @endforeach
             </select>
-            <input type="text" class="up form-control col-sm-10" name="author" id="author" placeholder="Nombre del director">
         </div>
 
         <div class="form-group row">
